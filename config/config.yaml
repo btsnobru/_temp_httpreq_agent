@@ -1,0 +1,30 @@
+
+api:
+  claude_api_key: "${CLAUDE_API_KEY}"
+  max_tokens_per_request: 1000
+  cost_per_token: 0.000003
+  model: "claude-3-sonnet-20240229"
+
+thresholds:
+  confidence_minimum: 0.85
+  max_cost_per_target: 10.00
+  false_positive_tolerance: 0.05
+
+targets:
+  concurrent_analysis: 5
+  timeout_per_target: 300
+  retry_attempts: 3
+  max_requests_per_second: 10
+
+learning:
+  pattern_retention_days: 365
+  minimum_evidence_samples: 10
+  confidence_decay_rate: 0.1
+
+logging:
+  level: "INFO"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: "logs/desync_hunter.log"
+
+database:
+  path: "knowledge/findings.db"
